@@ -1,12 +1,9 @@
 import React from "react";
+import { MainPage } from "../pages/main/main.page";
 import "./index.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">Learn React</header>
-    </div>
-  );
+  return <MainPage />;
 }
 
 export default App;
