@@ -3,11 +3,12 @@ import { getAllCountries } from "../../api/apiCountries";
 import { AutoCompleteText } from "../../AutoComplete/AutoCompleteText";
 
 type Countries = string[];
+type Country = string;
 
 export const AutoCompelteUseState = () => {
   const [items, setItems] = useState<Countries>([]);
-  const [suggestionsArray, setSuggestionsArray] = useState<string[]>([]);
-  const [text, setText] = useState<string>("");
+  const [suggestionsArray, setSuggestionsArray] = useState<Countries>([]);
+  const [text, setText] = useState<Country>("");
 
   useEffect(() => {
     const getCountriesHelper = async () => {
@@ -17,31 +18,31 @@ export const AutoCompelteUseState = () => {
     getCountriesHelper();
   });
 
-  const stateHelper = (array: string[]) => {
+  const stateHelper = (array: Countries) => {
     setSuggestionsArray(array);
   };
 
-  const onTextChanged = (e: any) => {
+  const onTextChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    let suggestions: string[] = [];
+    let suggestions: Countries = [];
     if (value.length > 0) {
       const regex = new RegExp(`^${value}`, "i");
-      suggestions = items.sort().filter((item) => regex.test(item));
+      suggestions = items.sort().filter((item: Country) => regex.test(item));
     }
     setSuggestionsArray(suggestions);
     setText(e.target.value);
   };
 
   const handleFocus = () => {
-    let suggestions: string[] = [];
+    let suggestions: Countries = [];
     if (text.length > 0) {
       const regex = new RegExp(`^${text}`, "i");
-      suggestions = items.sort().filter((item) => regex.test(item));
+      suggestions = items.sort().filter((item: Country) => regex.test(item));
     }
     setSuggestionsArray(suggestions);
   };
 
-  const suggestionSelected = (item: string) => {
+  const suggestionSelected = (item: Country) => {
     setText(item);
     setSuggestionsArray([]);
   };
