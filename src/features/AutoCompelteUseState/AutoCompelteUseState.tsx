@@ -48,7 +48,9 @@ export const AutoCompelteUseState = () => {
   };
 
   const handleBlur = () => {
-    setSuggestionsArray([]);
+    setTimeout(() => {
+      setSuggestionsArray([]);
+    }, 100);
   };
 
   return (
