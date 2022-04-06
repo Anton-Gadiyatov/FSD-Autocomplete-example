@@ -36,6 +36,8 @@ export const AutoCompelteUseState = () => {
     if (text.length > 0) {
       const regex = new RegExp(`^${text}`, "i");
       suggestions = items.sort().filter((item: Country) => regex.test(item));
+    } else {
+      suggestions = items;
     }
     setSuggestionsArray(suggestions);
   };
