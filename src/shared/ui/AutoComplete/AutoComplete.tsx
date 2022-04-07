@@ -42,11 +42,11 @@ export const AutoCompleteText = (props: Props) => {
   };
 
   return (
-    <div className="AutoCompleteText">
+    <div className="AutoCompleteText" onBlur={handleBlur}>
       <input
         value={text}
         onChange={onTextChanged}
-        onBlur={handleBlur}
+        // onBlur={handleBlur}
         onFocus={handleFocus}
         type="text"
       />
