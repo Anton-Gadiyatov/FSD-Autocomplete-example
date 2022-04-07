@@ -1,4 +1,3 @@
-import { click } from "@testing-library/user-event/dist/click";
 import "./AutoComplete.css";
 
 type Props = {
@@ -42,11 +41,11 @@ export const AutoCompleteText = (props: Props) => {
   };
 
   return (
-    <div className="AutoCompleteText" onBlur={handleBlur}>
+    <div className="AutoCompleteText">
       <input
         value={text}
         onChange={onTextChanged}
-        // onBlur={handleBlur}
+        onBlur={handleBlur}
         onFocus={handleFocus}
         type="text"
       />
